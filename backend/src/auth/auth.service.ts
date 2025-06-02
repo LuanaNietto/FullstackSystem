@@ -1,4 +1,3 @@
-// src/auth/auth.service.ts
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserService } from '../user/user.service';
 import * as bcrypt from 'bcryptjs';
@@ -7,7 +6,7 @@ import { CreateUserDto } from '../user/dto/create-user.dto';
 
 @Injectable()
 export class AuthService {
-  constructor(private usersService: UserService, private jwtService: JwtService) {}
+  constructor(private readonly usersService: UserService, private readonly jwtService: JwtService) {}
 
   async validateUser(email: string, pass: string): Promise<any> {
     const user = await this.usersService.findOneByEmail(email);
@@ -22,6 +21,7 @@ export class AuthService {
     await this.usersService.updateLastLogin(user.id);
     return {
       access_token: this.jwtService.sign(payload),
+      user: user
     };
   }
 

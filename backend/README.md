@@ -48,6 +48,16 @@ Foram criados testes unitários e de integração básicos com Jest para garanti
 ## Como executar
 
 ### Project setup
+É necessário criar um banco de dados PostgreSQL para este projeto. Em seguida, crie um arquivo .env na raiz do projeto backend e adicione as credenciais de conexão, seguindo a estrutura abaixo:
+```bash
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=seu_usuario
+DB_PASSWORD=sua_senha
+DB_DATABASE=nome_database
+JWT_SECRET=sua_chave_secreta
+JWT_EXPIRES_IN=3600s
+```
 
 ```bash
 $ npm install

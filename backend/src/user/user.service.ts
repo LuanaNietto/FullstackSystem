@@ -27,8 +27,7 @@ export class UserService {
 
   async findOneByEmail(email: string): Promise<User | undefined> {
     const user = await this.repo.findOne({ where: { email } });
-    if (!user) throw new NotFoundException('Usuário não encontrado');
-    return user;
+    return user ?? undefined;
   }
 
   async findOneById(id: string): Promise<User> {
@@ -60,10 +59,11 @@ export class UserService {
     if (!user) {
       throw new NotFoundException('Usuário não encontrado');
     }
+
     if (currentUser.role !== UserRole.ADMIN && currentUser.id !== id) {
       throw new ForbiddenException('Você não tem permissão para atualizar este usuário');
     }
-
+    
     if (updateUserDto.password) {
       updateUserDto.password = await bcrypt.hash(updateUserDto.password, 10);
     }
@@ -92,7 +92,7 @@ export class UserService {
       .getMany();
   }
 
-  async updateLastLogin(userId: string) {
-    await this.repo.update(userId, { lastLoginAt: new Date() });
+  async updateLastLogin(id: string) {
+    await this.repo.update(id, { lastLoginAt: new Date() });
   }
 }
