@@ -111,4 +111,4 @@ Para acessar rotas protegidas (somente para a admin), é obrigatório enviar um 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 
 
-### Desenvolvido por Luana Nietto.s
+### Desenvolvido por Luana Nietto.
