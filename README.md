@@ -19,6 +19,8 @@ Para registrar um usuário com perfil de administrador, utilize a rota /auth/reg
   }
 ```
 
+Usuários cadastrados pela interface do sistema serão automaticamente atribuídos ao perfil de usuário comum (user).
+
 ### Passo a passo para implementação está descrito no readme de cada um dos projetos (backend e frontend).
 
 #### Desenvolvido por Luana Nietto.
